@@ -85,7 +85,11 @@ h2{
 	color: #1D6154
 }
 
-h3{
+#category{
+
+}
+
+.category h3{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 16px;
@@ -96,7 +100,7 @@ h3{
 	padding: 18px;
 }
 
-h3:hover{
+.category h3:hover{
 	color:white;
 	background-color: #1D6154;
 
