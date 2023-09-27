@@ -131,4 +131,7 @@ function showAll() {
 getCategory();
 getWorks();
 
-
+if (localStorage.token){
+    const edition=document.querySelector(".modEdition")
+    edition.classList.add("active")
+}

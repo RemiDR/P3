@@ -277,6 +277,9 @@ margin: auto;
 	position: absolute;
 }
 
+.active{
+	display: block !important;
+}
 
 .logEdition {
 	display: flex;
@@ -285,3 +288,4 @@ margin: auto;
 	font-size: 16px;
 	gap: 10px;
 }
+
