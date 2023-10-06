@@ -132,6 +132,17 @@ getCategory();
 getWorks();
 
 if (localStorage.token){
+    //Affichage de la barre de profil
     const edition=document.querySelector(".modEdition")
     edition.classList.add("active")
+
+    //Changement du  menu header en logout
+    const loginout = document.querySelector('header ul>li:nth-of-type(3) a')
+    loginout.innerHTML = "logout"
+    loginout.addEventListener('click', e=>{
+        e.preventDefault()
+        delete localStorage.token
+        location.href = "/FrontEnd"
+    })
+
 }
