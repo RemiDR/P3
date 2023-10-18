@@ -136,6 +136,8 @@ if (localStorage.token){
     const edition=document.querySelector(".modEdition")
     edition.classList.add("active")
 
+    modals.classList.add("active")
+
     //Changement du  menu header en logout
     const loginout = document.querySelector('header ul>li:nth-of-type(3) a')
     loginout.innerHTML = "logout"
