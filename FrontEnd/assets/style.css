@@ -278,6 +278,7 @@ margin: auto;
 	position: absolute;
 	top: 0;
 	left: 0;
+	display: flex;
 }
 
 .active{
@@ -303,13 +304,15 @@ margin: auto;
 	padding-bottom: 3px;
 }
 
-#modals{
-	display: block !important;
+#modal{
+	display: none;
 	background: black;
 	position: fixed;
 	height: 100%;
 	left: 0;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	background-color: rgba(0,0,0,0.4);
 	flex-direction: column;
 }

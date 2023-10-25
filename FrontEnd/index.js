@@ -148,3 +148,11 @@ if (localStorage.token){
     })
 
 }
+if (localStorage.token){
+    const fenetre=document.querySelector(".logEdition")
+    fenetre.addEventListener("click")
+    {
+        //MyCallBack;
+        modal.classList.add("active")
+    }
+}
