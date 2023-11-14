@@ -131,6 +131,11 @@ function showAll() {
 getCategory();
 getWorks();
 
+if(!localStorage.token) {
+    getCategory
+}
+
+
 if (localStorage.token){
     //Affichage de la barre de profil
     const edition=document.querySelector(".modEdition")
@@ -149,10 +154,19 @@ if (localStorage.token){
 
 }
 if (localStorage.token){
-    const fenetre=document.querySelector(".logEdition")
-    fenetre.addEventListener("click")
-    {
+    const fenetre = document.querySelector(".logEdition")
+    fenetre.addEventListener("click",function(){
         //MyCallBack;
         modal.classList.add("active")
     }
+    )
+    logEdition.addEventListener("click",function(){
+        //MyCallBack;
+        modal.classList.add("active")
+    }
+    )
+    modal.addEventListener('click', function(e){
+    e.target.classList.remove('active')
+    })
+    category.classList.add('off')
 }
