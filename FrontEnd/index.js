@@ -154,6 +154,27 @@ if (localStorage.token){
 
 }
 if (localStorage.token){
+   //Fetch pour affichage dans le modal des works 
+   const urlWork = 'http://localhost:5678/api/works';
+
+    fetch(urlWork)
+    .then((response) => 
+    {
+        return response.json();
+    })
+    .then((data) => 
+    {
+        const fragment = document.createDocumentFragment();
+        const imageWork = document.querySelector(".galleryModal")
+        data.forEach(function(){
+            const img = document.createElement('img');
+            const container = document.createElement('div')
+            img.src=data.attributContenantLUrlDSeLImage
+            container.append(img)
+        })
+        
+    })
+
     const fenetre = document.querySelector(".logEdition")
     fenetre.addEventListener("click",function(){
         //MyCallBack;
@@ -170,3 +191,4 @@ if (localStorage.token){
     })
     category.classList.add('off')
 }
+
