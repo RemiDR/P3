@@ -1,4 +1,4 @@
-var submit = document.querySelector("form")
+/*var submit = document.querySelector("form")
 
 console.log(submit)
 submit.addEventListener("submit", (e) => {
@@ -9,7 +9,7 @@ submit.addEventListener("submit", (e) => {
         password: e.target.motDePasse.value,
     }
     console.log(JSON.stringify(obj))
-    if (e.target.email.value === "sophie.bluel@test.tld" && e.target.motDePasse.value === "S0phie") {
+    if (e.target.email.value === "sophie.bluel@test.tld" && e.target.motDePasse.value === "S0phiee") {
         fetch("http://localhost:5678/api/users/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -25,6 +25,61 @@ submit.addEventListener("submit", (e) => {
     else {
         alert("Erreur mauvais email ou mot de passe")
     }
+})*/
+
+const erreurDejaConnecter = document.querySelector(".erreurDejaConnecter");
+const erreurMail = document.querySelector(".erreurMail");
+const erreurMotDePasse = document.querySelector(".erreurMotDePasse");
+
+const email = document.getElementById("email");
+const password = document.getElementById("motDePasse");
+const submit = document.getElementById("submit");
+
+const urlApi = "http://localhost:5678/api/users/login";
+
+verifLogin();
+function verifLogin() {
+    if(localStorage.getItem("token")){
+        localStorage.removeItem("token");
+    }
+}
+
+submit.addEventListener("click",()=>{
+    let user = {
+        email: email.value,
+        password: motDePasse.value,
+    };
+    login(user);
 })
 
-
+async function login(user){
+   erreurMail.innerHTML="";
+   erreurMotDePasse.innerHTML="";
+   console.log(user);
+   console.log("Test",user);
+    if(!user.email.match(/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/g ) || !user.password.match(/^[a-zA-Z0-9]+$/g) ){
+        return;
+    }
+    try{
+        const response = await fetch(urlApi,{
+            method: "POST",
+            headers: { "Content-Type": "application/json;charset=utf-8" },
+            body: JSON.stringify(user),
+        });
+        console.log("Test2",user);
+        const resultat = await response.json();
+        if(resultat.error || resultat.message){
+            const erreurMessage = document.createElement("p");
+            erreurMessage.innerHTML = "Erreur mauvais email ou mot de passe";
+            erreurMotDePasse.appendChild(erreurMessage); 
+        }
+        console.log("Test3",user);
+        else if(resultat.token) {
+            localStorage.setItem("token",resultat.token);
+            window.location.href = "index.html";
+        }
+    } catch(error){
+        console.log(error);
+    }
+    
+}

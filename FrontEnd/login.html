@@ -27,13 +27,16 @@
     </header>
     <main>
         <section id="login">
-            <h2>Log in</h2>
-            <form action="#" method="post">
+            <h2>Log in</h2> 
+            <div class="erreurDejaConnecter"></div>
+            <form action="" login-form method="post">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
+                <div class="erreurMail"></div>
                 <label for="motDePasse">Mot de passe</label>
                 <input type="password" name="motDePasse" id="motDePasse">
-                <input type="submit" value="Se connecter">
+                <div class="erreurMotDePasse"></div>
+                <input type="submit" value="Se connecter" id="submit">
                 <u>Mot de passe oublié</u>
             </form>
         </section>
