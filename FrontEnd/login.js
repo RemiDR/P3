@@ -32,10 +32,10 @@ const erreurMail = document.querySelector(".erreurMail");
 const erreurMotDePasse = document.querySelector(".erreurMotDePasse");
 
 const email = document.getElementById("email");
-const password = document.getElementById("motDePasse");
+const password = document.getElementById("password");
 const submit = document.getElementById("submit");
 
-const urlApi = "http://localhost:5678/api/users/login";
+const urlApi = "http://localhost:5677/api/users/login";
 
 verifLogin();
 function verifLogin() {
@@ -44,19 +44,21 @@ function verifLogin() {
     }
 }
 
-submit.addEventListener("click",()=>{
+submit.addEventListener("click",(event)=>{
+    event.preventDefault();
     let user = {
         email: email.value,
-        password: motDePasse.value,
+        password: password.value,
     };
     login(user);
 })
 
 async function login(user){
-   erreurMail.innerHTML="";
-   erreurMotDePasse.innerHTML="";
-   console.log(user);
-   console.log("Test",user);
+    console.log(user);
+    erreurMail.innerHTML="";
+    erreurMotDePasse.innerHTML="";
+    console.log(user);
+    console.log("Test",user);
     if(!user.email.match(/^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/g ) || !user.password.match(/^[a-zA-Z0-9]+$/g) ){
         return;
     }
@@ -66,14 +68,13 @@ async function login(user){
             headers: { "Content-Type": "application/json;charset=utf-8" },
             body: JSON.stringify(user),
         });
-        console.log("Test2",user);
         const resultat = await response.json();
+        console.log(resultat);
         if(resultat.error || resultat.message){
             const erreurMessage = document.createElement("p");
             erreurMessage.innerHTML = "Erreur mauvais email ou mot de passe";
             erreurMotDePasse.appendChild(erreurMessage); 
         }
-        console.log("Test3",user);
         else if(resultat.token) {
             localStorage.setItem("token",resultat.token);
             window.location.href = "index.html";

@@ -11,6 +11,8 @@
         rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="shortcut icon" href="#">
+    <script type="module" src="./login.js"></script>
 </head>
 
 <body>
@@ -29,12 +31,12 @@
         <section id="login">
             <h2>Log in</h2> 
             <div class="erreurDejaConnecter"></div>
-            <form action="" login-form method="post">
+            <form action="" method="post">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
                 <div class="erreurMail"></div>
-                <label for="motDePasse">Mot de passe</label>
-                <input type="password" name="motDePasse" id="motDePasse">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password">
                 <div class="erreurMotDePasse"></div>
                 <input type="submit" value="Se connecter" id="submit">
                 <u>Mot de passe oublié</u>
@@ -50,5 +52,4 @@
         </nav>
     </footer>
 </body>
-<script src="./login.js"></script>
 </html>

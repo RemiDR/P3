@@ -16,7 +16,6 @@ window.onclick = function (event) {
         closeGalleryModal();
     }
 }*/
-
 if( localStorage.token){
     const template=`<div class ="modEdition">
     <div class="logEdition">

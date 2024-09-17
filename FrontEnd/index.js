@@ -1,6 +1,6 @@
 function getCategory()
 {
-    const urlCat = 'http://localhost:5678/api/categories';
+    const urlCat = 'http://localhost:5677/api/categories';
     fetch(urlCat)
     .then((response) => 
 		{
@@ -47,7 +47,7 @@ function getCategory()
 }
 
 function getWorks() {
-    const urlWork = 'http://localhost:5678/api/works';
+    const urlWork = 'http://localhost:5677/api/works';
 
     fetch(urlWork)
         .then((response) => 
@@ -155,7 +155,7 @@ if (localStorage.token){
 }
 if (localStorage.token){
    //Fetch pour affichage dans le modal des works 
-   const urlWork = 'http://localhost:5678/api/works';
+   const urlWork = 'http://localhost:5677/api/works';
 
     fetch(urlWork)
     .then((response) => 
